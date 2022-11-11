@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDecline"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="24dp"
+            android:background="#010035"
+            android:text="X"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/options"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:letterSpacing="-0.02"
+            android:text="Filter options"
+            android:textColor="#010035"
+
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnAccept"
+            android:layout_width="86dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
+            android:background="#FF6E4E"
+            android:letterSpacing="-0.02"
+            android:text="Done"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="35dp"
+        android:letterSpacing="-0.02"
+        android:text="Brand"
+        android:textColor="#010035"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinner_brand"
+        android:layout_width="337dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:entries="@array/brands"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:letterSpacing="-0.02"
+        android:text="Price"
+        android:textColor="#010035"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinner_price"
+        android:layout_width="337dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:entries="@array/prices"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:letterSpacing="-0.02"
+        android:text="Size"
+        android:textColor="#010035"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinner_size"
+        android:layout_width="337dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="30dp"
+        android:entries="@array/size"
+        android:spinnerMode="dropdown" />
+
+</LinearLayout>
