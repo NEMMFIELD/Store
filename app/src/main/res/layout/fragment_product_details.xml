@@ -10,12 +10,12 @@
         android:id="@+id/details_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="79dp"
         android:layout_marginStart="42dp"
+        android:layout_marginTop="79dp"
         android:background="#010035"
         android:text="@string/back_symbol"
-        android:textSize="25sp"
         android:textColor="#FFFFFF"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="82dp"
         android:text="Product Details"
-        android:textSize="20sp"
         android:textColor="#010035"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/details_bucket"
         app:layout_constraintStart_toEndOf="@+id/details_back"
@@ -38,8 +38,8 @@
         android:layout_height="40dp"
         android:layout_marginTop="79dp"
         android:layout_marginEnd="35dp"
-        android:src="@drawable/bucket"
         android:background="@drawable/btn_rec"
+        android:src="@drawable/bucket"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,5 +53,206 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_title" />
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="25dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carouselRecycler_details">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/details_product_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="5dp"
+                android:text="Samsung Galaxy"
+                android:textColor="#010035"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="#010035"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/liked"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="3dp"
+                    android:src="@drawable/lightheart" />
+            </androidx.cardview.widget.CardView>
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:numStars="5"
+                android:stepSize="1"
+                android:theme="@style/RatingBar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/details_product_title" />
+
+            <TextView
+                android:id="@+id/details_shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:letterSpacing="-0.02"
+
+                android:textColor="#010035"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingBar" />
+
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="5dp"
+                android:letterSpacing="-0.02"
+                android:text="Details"
+                android:textColor="#80000000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/details_shop"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+            <TextView
+                android:id="@+id/details_Features"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="35dp"
+                android:letterSpacing="-0.02"
+                android:text="Features"
+                android:textColor="#80000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+            <ImageView
+                android:id="@+id/details_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/group"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/details_shop" />
+
+            <ImageView
+                android:id="@+id/details_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/camera"
+                app:layout_constraintStart_toEndOf="@+id/details_group"
+                app:layout_constraintTop_toBottomOf="@+id/details_shop" />
+
+            <ImageView
+                android:id="@+id/details_ram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ram"
+                app:layout_constraintStart_toEndOf="@+id/details_camera"
+                app:layout_constraintTop_toBottomOf="@+id/details_shop" />
+
+            <ImageView
+                android:id="@+id/details_sdCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="45dp"
+                android:src="@drawable/sdcard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/details_shop" />
+
+            <TextView
+                android:id="@+id/details_modelPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/exynos_990"
+                android:textColor="#B7B7B7"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/details_group" />
+
+            <TextView
+                android:id="@+id/details_product_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="#B7B7B7"
+                android:textSize="11sp"
+                android:layout_marginStart="18dp"
+                android:text="@string/mp"
+                app:layout_constraintStart_toEndOf="@+id/details_modelPhone"
+                app:layout_constraintTop_toBottomOf="@+id/details_group" />
+
+            <TextView
+                android:id="@+id/details_product_ram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gb"
+                android:textColor="#B7B7B7"
+                android:textSize="11sp"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="50dp"
+                app:layout_constraintStart_toEndOf="@+id/details_product_camera"
+                app:layout_constraintTop_toBottomOf="@+id/details_group" />
+
+            <TextView
+                android:id="@+id/details_product_sdRam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sdcard_gb"
+                android:textColor="#B7B7B7"
+                android:textSize="11sp"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="52dp"
+                app:layout_constraintStart_toEndOf="@+id/details_product_ram"
+                app:layout_constraintTop_toBottomOf="@+id/details_group" />
+
+            <ImageView
+                android:id="@+id/mock_parameters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/maket"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/details_product_ram" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

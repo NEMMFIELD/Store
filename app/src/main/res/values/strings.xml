@@ -4,6 +4,11 @@
     <string name="buy_now">Buy now!</string>
     <string name="location_city">Moscow</string>
     <string name="back_symbol">&lt;</string>
+    <string name="shop"><u>Shop</u></string>
+    <string name="gb">8 GB</string>
+    <string name="mp">108 + 12 mp</string>
+    <string name="exynos_990">Exynos 990</string>
+    <string name="sdcard_gb">256 GB</string>
 
     <string-array name="brands">
         <item>Samsung</item>

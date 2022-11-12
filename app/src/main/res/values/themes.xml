@@ -27,4 +27,9 @@
         <item name="colorAccent">@android:color/white</item>
     </style>
 
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">	#D3D3D3</item>
+        <item name="colorControlActivated">#FFB800</item>
+    </style>
+
 </resources>
