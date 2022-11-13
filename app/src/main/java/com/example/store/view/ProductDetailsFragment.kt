@@ -4,12 +4,10 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextPaint
 import android.text.style.CharacterStyle
-import android.text.style.ForegroundColorSpan
-import android.text.style.UnderlineSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,11 +17,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.store.R
 import com.example.store.databinding.FragmentProductDetailsBinding
-import com.example.store.model.details.CarouselDetailsAdapter
-import com.example.store.viewmodel.HomeStoreViewModel
+import com.example.store.model.network.State
 import com.example.store.viewmodel.ProductDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -51,12 +46,24 @@ class ProductDetailsFragment : Fragment() {
             carouselRecyclerDetails.adapter = viewModelDetails.carouselDetailsAdapter
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModelDetails.detailsImageFlow.collect {
-                        viewModelDetails.carouselDetailsAdapter.submitList(it)
-                        println(viewModelDetails.carouselDetailsAdapter.currentList)
+                    viewModelDetails.detailsImageFlow.collect { state ->
+                        when (state) {
+                            is State.Success -> {
+                                viewModelDetails.carouselDetailsAdapter.submitList(mutableListOf(state.data))
+                                detailsProductTitle.text = state.data.title
+                                ratingBar.rating = state.data.phoneRating?.toFloat() ?: 0f
+                                detailsCpu.text = state.data.cpu
+                                detailsProductCamera.text = state.data.camera
+                                detailsProductRam.text = state.data.ssd
+                                detailsProductSdRam.text = state.data.sd
+                            }
+                            is State.Failure -> Log.d("TagError", "Error: ${state.message}")
+                            is State.Empty -> {}
+                        }
                     }
                 }
             }
+
             val text = "Shop"
             val mSpannableString = SpannableString(text)
             mSpannableString.setSpan(ColoredUnderlineSpan(Color.parseColor("#FF6E4E"), 10f),

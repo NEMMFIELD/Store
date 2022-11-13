@@ -11,7 +11,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="79dp"
+        android:layout_marginTop="64dp"
         android:background="#010035"
         android:text="@string/back_symbol"
         android:textColor="#FFFFFF"
@@ -23,7 +23,7 @@
         android:id="@+id/details_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="67dp"
         android:text="Product Details"
         android:textColor="#010035"
         android:textSize="20sp"
@@ -36,7 +36,7 @@
         android:id="@+id/details_bucket"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="79dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="35dp"
         android:background="@drawable/btn_rec"
         android:src="@drawable/bucket"
@@ -48,7 +48,7 @@
         android:id="@+id/carouselRecycler_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_title" />
@@ -57,9 +57,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
         android:layout_marginEnd="25dp"
         app:cardCornerRadius="10dp"
+        app:contentPaddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carouselRecycler_details">
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
                 android:numStars="5"
-                android:stepSize="1"
+                android:stepSize="0.5"
                 android:theme="@style/RatingBar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/details_product_title" />
@@ -120,7 +120,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:letterSpacing="-0.02"
-
+                android:text="Shop"
                 android:textColor="#010035"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -154,89 +154,102 @@
 
             <ImageView
                 android:id="@+id/details_group"
-                android:layout_width="wrap_content"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/group"
+                app:layout_constraintEnd_toStartOf="@+id/details_camera"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/details_shop" />
 
             <ImageView
                 android:id="@+id/details_camera"
-                android:layout_width="wrap_content"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/camera"
+                app:layout_constraintEnd_toStartOf="@+id/details_ram"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/details_group"
                 app:layout_constraintTop_toBottomOf="@+id/details_shop" />
 
             <ImageView
                 android:id="@+id/details_ram"
-                android:layout_width="wrap_content"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/ram"
+                app:layout_constraintEnd_toStartOf="@+id/details_sdCard"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/details_camera"
                 app:layout_constraintTop_toBottomOf="@+id/details_shop" />
 
             <ImageView
                 android:id="@+id/details_sdCard"
-                android:layout_width="wrap_content"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="45dp"
                 android:src="@drawable/sdcard"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/details_ram"
                 app:layout_constraintTop_toBottomOf="@+id/details_shop" />
 
             <TextView
-                android:id="@+id/details_modelPhone"
-                android:layout_width="wrap_content"
+                android:id="@+id/details_cpu"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="3dp"
                 android:text="@string/exynos_990"
                 android:textColor="#B7B7B7"
+                android:layout_marginStart="40dp"
+                android:paddingStart="10dp"
                 android:textSize="11sp"
+                app:layout_constraintEnd_toStartOf="@+id/details_product_camera"
+                app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/details_group" />
 
             <TextView
                 android:id="@+id/details_product_camera"
-                android:layout_width="wrap_content"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
+                android:text="@string/mp"
                 android:textColor="#B7B7B7"
                 android:textSize="11sp"
-                android:layout_marginStart="18dp"
-                android:text="@string/mp"
-                app:layout_constraintStart_toEndOf="@+id/details_modelPhone"
+                android:paddingStart="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/details_product_ram"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/details_cpu"
                 app:layout_constraintTop_toBottomOf="@+id/details_group" />
 
             <TextView
                 android:id="@+id/details_product_ram"
-                android:layout_width="wrap_content"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
-                android:text="@string/gb"
-                android:textColor="#B7B7B7"
-                android:textSize="11sp"
                 android:layout_marginTop="3dp"
-                android:layout_marginStart="50dp"
+                android:text="8 GB"
+                android:paddingStart="2dp"
+                android:textColor="#B7B7B7"
+                android:layout_marginStart="20dp"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toStartOf="@+id/details_product_sdRam"
                 app:layout_constraintStart_toEndOf="@+id/details_product_camera"
                 app:layout_constraintTop_toBottomOf="@+id/details_group" />
 
             <TextView
                 android:id="@+id/details_product_sdRam"
-                android:layout_width="wrap_content"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
-                android:text="@string/sdcard_gb"
+                android:layout_marginTop="3dp"
+                android:text="256 GB"
                 android:textColor="#B7B7B7"
                 android:textSize="11sp"
-                android:layout_marginTop="3dp"
-                android:layout_marginStart="52dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/details_product_ram"
                 app:layout_constraintTop_toBottomOf="@+id/details_group" />
 
@@ -244,12 +257,26 @@
                 android:id="@+id/mock_parameters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/maket"
                 android:layout_marginTop="20dp"
+                android:src="@drawable/maket"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/details_product_ram" />
 
+            <Button
+                android:id="@+id/btn_addCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="#FF6E4E"
+                android:letterSpacing="-0.02"
+                android:text="@string/add_to_cart"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mock_parameters" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

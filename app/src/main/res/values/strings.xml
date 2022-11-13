@@ -9,6 +9,7 @@
     <string name="mp">108 + 12 mp</string>
     <string name="exynos_990">Exynos 990</string>
     <string name="sdcard_gb">256 GB</string>
+    <string name="add_to_cart">Add to Cart $1,500.00</string>
 
     <string-array name="brands">
         <item>Samsung</item>

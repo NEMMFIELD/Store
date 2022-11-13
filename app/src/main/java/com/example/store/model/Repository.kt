@@ -16,7 +16,7 @@ interface Repository {
     fun getPhonesBestSeller(): Flow<List<BestSellerModel>>
     fun setFavourites(bestSellerModel: BestSellerModel)
     fun getFavourites(id: Int?): Boolean
-    fun getDetailsPhone(): Flow<List<CarouselDetailsModel>>
+    fun getDetailsPhone(): Flow<CarouselDetailsModel>
 }
 
 class RepositoryImpl @Inject constructor(
@@ -38,6 +38,10 @@ class RepositoryImpl @Inject constructor(
         emit(myList)
     }.flowOn(Dispatchers.IO)
 
+    override fun getDetailsPhone(): Flow<CarouselDetailsModel> = flow {
+        emit(convertDetailsResponseToCarouselDetailsModel(phonesApi.getProductDetails()))
+    }.flowOn(Dispatchers.IO)
+
 
     override fun setFavourites(bestSellerModel: BestSellerModel) {
         val editor = sharedPreferences.edit()
@@ -46,13 +50,6 @@ class RepositoryImpl @Inject constructor(
 
     override fun getFavourites(id: Int?): Boolean =
         sharedPreferences.getBoolean(id.toString(), false)
-
-    override fun getDetailsPhone(): Flow<List<CarouselDetailsModel>> = flow {
-        val request = phonesApi.getProductDetails().images
-        val myList: List<CarouselDetailsModel> = request?.map { convertDetailsResponseToCarouselDetailsModel(it) } ?: emptyList()
-        emit(myList)
-    }.flowOn(Dispatchers.IO)
-
 
     private fun convertResponseToCarouselModel(response: HomeStoreItem): CarouselModel =
         CarouselModel(
@@ -74,6 +71,13 @@ class RepositoryImpl @Inject constructor(
             picturePath = response.picture
         )
 
-    private fun convertDetailsResponseToCarouselDetailsModel(responseDetails: String?): CarouselDetailsModel =
-        CarouselDetailsModel(detailsImg = responseDetails)
+    private fun convertDetailsResponseToCarouselDetailsModel(responseDetails: ResponseDetails): CarouselDetailsModel =
+        CarouselDetailsModel(detailsImg = responseDetails.images,
+            phoneRating = responseDetails.rating as Double,
+            cpu = responseDetails.cPU,
+            camera = responseDetails.camera,
+            ssd = responseDetails.ssd,
+            sd = responseDetails.sd,
+            title = responseDetails.title)
+
 }
