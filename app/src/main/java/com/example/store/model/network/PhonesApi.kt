@@ -1,6 +1,7 @@
 package com.example.store.model.network
 
 import com.example.store.model.BasketItem
+import com.example.store.model.BasketResponse
 import com.example.store.model.Response
 import com.example.store.model.ResponseDetails
 import retrofit2.http.GET
@@ -13,6 +14,6 @@ interface PhonesApi {
     suspend fun getProductDetails(): ResponseDetails
 
     @GET("53539a72-3c5f-4f30-bbb1-6ca10d42c149")
-    suspend fun getBasket():BasketItem
+    suspend fun getBasket(): BasketResponse
 
 }
