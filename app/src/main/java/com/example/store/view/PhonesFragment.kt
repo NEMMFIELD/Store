@@ -36,13 +36,11 @@ class PhonesFragment : Fragment() {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
                     viewModel.homeStoreFlow.collect {
                         viewModel.carouselAdapter.submitList(it)
-                        println(viewModel.carouselAdapter.currentList)
                     }
                 }
             }
         }
     }
-
 
     companion object {
         @JvmStatic

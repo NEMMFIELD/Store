@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/basket_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/basket_back"
@@ -60,9 +60,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_basket"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="540dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         app:cardBackgroundColor="#010035"
         app:cardCornerRadius="10dp"
@@ -78,8 +78,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/basket_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@drawable/line_6"
+                android:layout_marginTop="260dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/basket_list" />
@@ -124,7 +126,7 @@
                 android:id="@+id/basket_total_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="40dp"
                 android:text="$6,000 us"
                 android:layout_marginTop="5dp"
                 android:letterSpacing="-0.02"
@@ -172,7 +174,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/line_2"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.cardview.widget.CardView>
 

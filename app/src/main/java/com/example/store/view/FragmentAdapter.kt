@@ -10,10 +10,6 @@ class FragmentAdapter(fragment: Fragment):FragmentStateAdapter(fragment) {
     }
 
     override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> PhonesFragment.newInstance()
-            else -> PhonesFragment.newInstance()
+        return PhonesFragment.newInstance()
         }
     }
-
-}

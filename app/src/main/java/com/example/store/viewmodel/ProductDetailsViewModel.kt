@@ -2,7 +2,7 @@ package com.example.store.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.store.model.RepositoryImpl
+import com.example.store.model.Repository
 import com.example.store.model.details.CarouselDetailsAdapter
 import com.example.store.model.details.CarouselDetailsModel
 import com.example.store.model.network.State
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductDetailsViewModel @Inject constructor(private val repository: RepositoryImpl) :
+class ProductDetailsViewModel @Inject constructor(private val repository: Repository) :
     ViewModel() {
     private val _detailsImageFlow: MutableStateFlow<State<CarouselDetailsModel>> =
         MutableStateFlow(State.Empty)

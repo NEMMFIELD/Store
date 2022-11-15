@@ -12,12 +12,12 @@ import com.example.store.databinding.CarouseldetailsItemViewBinding
 class CarouselDetailsAdapter() :
     ListAdapter<CarouselDetailsModel, CarouselDetailsAdapter.CarouselDetailsViewHolder>(
         CarouselDetailsDiffUtil()) {
-    inner class CarouselDetailsViewHolder(val binding: CarouseldetailsItemViewBinding) :
+    inner class CarouselDetailsViewHolder(private val binding: CarouseldetailsItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-         fun bind(item: CarouselDetailsModel) =
-             with(binding) {
-                     detailsPhoneImage.load(item.detailsImg?.first())
-             }
+        fun bind(item: CarouselDetailsModel) =
+            with(binding) {
+                detailsPhoneImage.load(item.detailsImg?.first())
+            }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarouselDetailsViewHolder {
@@ -28,7 +28,7 @@ class CarouselDetailsAdapter() :
     }
 
     override fun onBindViewHolder(holder: CarouselDetailsViewHolder, position: Int) {
-         holder.bind(getItem(position))
+        holder.bind(getItem(position))
     }
 
     class CarouselDetailsDiffUtil : DiffUtil.ItemCallback<CarouselDetailsModel>() {

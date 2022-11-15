@@ -1,6 +1,7 @@
 package com.example.store.model
 
 import android.content.SharedPreferences
+import com.example.store.model.basket.BasketModel
 import com.example.store.model.bestseller.BestSellerModel
 import com.example.store.model.details.CarouselDetailsModel
 import com.example.store.model.homestore.CarouselModel
@@ -17,6 +18,7 @@ interface Repository {
     fun setFavourites(bestSellerModel: BestSellerModel)
     fun getFavourites(id: Int?): Boolean
     fun getDetailsPhone(): Flow<CarouselDetailsModel>
+    fun getBasketResponse(): Flow<BasketModel>
 }
 
 class RepositoryImpl @Inject constructor(
@@ -42,6 +44,9 @@ class RepositoryImpl @Inject constructor(
         emit(convertDetailsResponseToCarouselDetailsModel(phonesApi.getProductDetails()))
     }.flowOn(Dispatchers.IO)
 
+    override fun getBasketResponse(): Flow<BasketModel> = flow {
+      emit(convertBasketResponseToBasketModel(phonesApi.getBasket().basket?.last()?:throw Exception()))
+    }.flowOn(Dispatchers.IO)
 
     override fun setFavourites(bestSellerModel: BestSellerModel) {
         val editor = sharedPreferences.edit()
@@ -79,5 +84,12 @@ class RepositoryImpl @Inject constructor(
             ssd = responseDetails.ssd,
             sd = responseDetails.sd,
             title = responseDetails.title)
+
+    private fun convertBasketResponseToBasketModel(responseBasket: BasketItem): BasketModel =
+        BasketModel(id = responseBasket.id,
+            image = responseBasket.images,
+            title = responseBasket.title,
+            price = responseBasket.price
+        )
 
 }

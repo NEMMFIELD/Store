@@ -1,20 +1,26 @@
 package com.example.store.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.store.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.store.databinding.FragmentBasketBinding
-import com.example.store.databinding.FragmentPhonesBinding
+import com.example.store.viewmodel.BasketViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class BasketFragment : Fragment() {
     private var _binding: FragmentBasketBinding? = null
     private val binding get() = _binding!!
-
+    private val viewModelBasket: BasketViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -23,12 +29,26 @@ class BasketFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.basketList.layoutManager = LinearLayoutManager(requireContext())
+        binding.basketList.adapter = viewModelBasket.basketAdapter
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModelBasket.basketFlow.collect {
+                    viewModelBasket.basketAdapter.submitList(it)
+                    if (it.isNotEmpty()) {
+                        binding.basketTotalSum.text = ("$${it.first().price.toString()} us")
+                    }
+                }
+            }
+        }
 
     }
 
     companion object {
+        @JvmStatic
         fun newInstance() = BasketFragment()
-            }
     }
+}

@@ -1,9 +1,7 @@
 package com.example.store.model.bestseller
 
 import android.annotation.SuppressLint
-import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.store.R
 import com.example.store.databinding.BestsellerItemBinding
-import com.example.store.databinding.CarouselItemViewBinding
-import com.example.store.model.homestore.CarouselModel
 import javax.inject.Inject
 
 class BestSellerAdapter @Inject constructor(
@@ -20,6 +16,7 @@ class BestSellerAdapter @Inject constructor(
 ) :
     ListAdapter<BestSellerModel, BestSellerAdapter.ViewHolder>(BestSellerDiffUtil()) {
     var onModelClick: ((BestSellerModel) -> Unit)? = null
+
     inner class ViewHolder(private val binding: BestsellerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
@@ -40,7 +37,6 @@ class BestSellerAdapter @Inject constructor(
                     )
                 }
                 itemView.setOnClickListener {
-                   // clickListener.phoneClick(item)
                     onModelClick?.invoke(item)
                 }
             }
@@ -73,7 +69,4 @@ class BestSellerAdapter @Inject constructor(
         fun onItemClick(bestSellerModel: BestSellerModel, position: Int)
     }
 
-    /*interface ClickListener {
-        fun phoneClick(bestSellerModel: BestSellerModel)
-    }*/
 }

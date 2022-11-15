@@ -19,6 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.store.databinding.FragmentProductDetailsBinding
 import com.example.store.model.network.State
+import com.example.store.viewmodel.BasketViewModel
 import com.example.store.viewmodel.ProductDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -63,6 +64,7 @@ class ProductDetailsFragment : Fragment() {
                     }
                 }
             }
+
 
             val text = "Shop"
             val mSpannableString = SpannableString(text)
