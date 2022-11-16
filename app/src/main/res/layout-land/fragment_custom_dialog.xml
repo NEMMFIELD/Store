@@ -17,7 +17,7 @@
             android:layout_marginStart="44dp"
             android:layout_marginTop="24dp"
             android:background="#010035"
-            android:text="@string/x"
+            android:text="X"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
@@ -29,7 +29,7 @@
             android:layout_weight="0.5"
             android:gravity="center"
             android:letterSpacing="-0.02"
-            android:text="@string/filter_options"
+            android:text="Filter options"
             android:textColor="#010035"
             android:textSize="18sp" />
 
@@ -41,7 +41,7 @@
             android:layout_marginEnd="20dp"
             android:background="#FF6E4E"
             android:letterSpacing="-0.02"
-            android:text="@string/done"
+            android:text="Done"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
     </LinearLayout>
@@ -53,7 +53,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="35dp"
         android:letterSpacing="-0.02"
-        android:text="@string/brand"
+        android:text="Brand"
         android:textColor="#010035"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -74,7 +74,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:letterSpacing="-0.02"
-        android:text="@string/price_dialog"
+        android:text="Price"
         android:textColor="#010035"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -95,7 +95,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:letterSpacing="-0.02"
-        android:text="@string/size_dialog"
+        android:text="Size"
         android:textColor="#010035"
         android:textSize="18sp"
         android:textStyle="bold" />

@@ -2,6 +2,7 @@ package com.example.store.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +15,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.store.R
-import com.example.store.databinding.FragmentMainBinding
+import com.example.store.databinding.FragmentBestSellerBinding
 import com.example.store.model.bestseller.BestSellerAdapter
 import com.example.store.model.bestseller.BestSellerModel
+import com.example.store.model.network.State
 import com.example.store.viewmodel.BestSellerViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,8 +26,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 @AndroidEntryPoint
-class MainFragment : Fragment(), BestSellerAdapter.ItemClick {
-    private var _binding: FragmentMainBinding? = null
+class BestSellerFragment : Fragment(), BestSellerAdapter.ItemClick {
+    private var _binding: FragmentBestSellerBinding? = null
     private val binding get() = _binding!!
 
     private val bestSellerViewModel: BestSellerViewModel by viewModels()
@@ -35,7 +37,7 @@ class MainFragment : Fragment(), BestSellerAdapter.ItemClick {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentBestSellerBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -49,8 +51,16 @@ class MainFragment : Fragment(), BestSellerAdapter.ItemClick {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                bestSellerViewModel.bestSellerFlow.collect {
-                    adapter.submitList(it)
+                bestSellerViewModel.bestSellerFlow.collect { state ->
+                    when (state) {
+                        is State.Success -> {
+                            adapter.submitList(state.data)
+                        }
+                        is State.Failure -> {
+                            Log.d("Error", "Error in BestSeller's: ${state.message} ")
+                        }
+                        is State.Empty -> {}
+                    }
                 }
             }
         }
@@ -110,5 +120,4 @@ class MainFragment : Fragment(), BestSellerAdapter.ItemClick {
         bestSellerViewModel.setLike(bestSellerModel)
         adapter.notifyItemChanged(position, 1)
     }
-
 }

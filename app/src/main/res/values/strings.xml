@@ -11,6 +11,30 @@
     <string name="sdcard_gb">256 GB</string>
     <string name="add_to_cart">Add to Cart $1,500.00</string>
     <string name="basket_model">Samsung Note 20\nUltra</string>
+    <string name="price">$3000.00</string>
+    <string name="discountprice">discountPrice</string>
+    <string name="list_model">Samsung Galaxy Ultra</string>
+    <string name="carousel_model">Iphone 12</string>
+    <string name="new_patch">New</string>
+    <string name="add_address">Add address</string>
+    <string name="select_category">Select Category</string>
+    <string name="view_all">view all</string>
+    <string name="x">X</string>
+    <string name="filter_options">Filter options</string>
+    <string name="done">Done</string>
+    <string name="brand">Brand</string>
+    <string name="price_dialog">Price</string>
+    <string name="size_dialog">Size</string>
+    <string name="hot_sales">Hot Sales</string>
+    <string name="see_more">see more</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="see_more_">see more</string>
+    <string name="product_details">Product Details</string>
+    <string name="samsung_galaxy">Samsung Galaxy</string>
+    <string name="shop_details">Shop</string>
+    <string name="details">Details</string>
+    <string name="features">Features</string>
+    <string name="_256_gb">256 GB</string>
 
     <string-array name="brands">
         <item>Samsung</item>

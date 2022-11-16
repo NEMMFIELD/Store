@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.store.model.Repository
 import com.example.store.model.homestore.CarouselAdapter
 import com.example.store.model.homestore.CarouselModel
-import com.example.store.model.RepositoryImpl
+import com.example.store.model.network.State
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,8 +16,8 @@ import javax.inject.Inject
 class HomeStoreViewModel @Inject constructor(private val repository: Repository):ViewModel() {
     var carouselAdapter = CarouselAdapter()
 
-    private val _homeStoreFlow:MutableStateFlow<List<CarouselModel>> = MutableStateFlow(emptyList())
-    val homeStoreFlow:StateFlow<List<CarouselModel>> get() = _homeStoreFlow
+    private val _homeStoreFlow:MutableStateFlow<State<List<CarouselModel>>> = MutableStateFlow(State.Empty)
+    val homeStoreFlow:StateFlow<State<List<CarouselModel>>> get() = _homeStoreFlow
 
     init {
         loadStorePhones()
@@ -26,7 +26,7 @@ class HomeStoreViewModel @Inject constructor(private val repository: Repository)
     private fun loadStorePhones() {
         viewModelScope.launch {
             repository.getPhonesStore().collect {
-                _homeStoreFlow.value = it
+                _homeStoreFlow.value = State.Success(it)
             }
         }
     }

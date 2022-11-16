@@ -25,7 +25,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginEnd="10dp"
         android:letterSpacing="-0.02"
-        android:text="@string/add_address"
+        android:text="Add address"
         android:textColor="#010035"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/basket_address"
@@ -86,8 +86,8 @@
                 android:id="@+id/line_1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@drawable/line_6"
                 android:layout_marginTop="120dp"
+                android:background="@drawable/line_6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/basket_list" />
@@ -124,12 +124,12 @@
                 android:id="@+id/basket_total_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
-                android:text="$6,000 us"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="40dp"
                 android:letterSpacing="-0.02"
-                android:textSize="15sp"
+                android:text="$6,000 us"
                 android:textColor="#FFFFFF"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line_1" />
 
@@ -137,12 +137,12 @@
                 android:id="@+id/basket_free"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Free"
-                android:letterSpacing="-0.02"
-                android:textSize="15sp"
-                android:textColor="#FFFFFF"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="69dp"
+                android:letterSpacing="-0.02"
+                android:text="Free"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/basket_total_sum" />
 
@@ -150,8 +150,8 @@
                 android:id="@+id/line_2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@drawable/line_6"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/line_6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/basket_delivery" />
@@ -160,16 +160,16 @@
                 android:id="@+id/basket_checkout"
                 android:layout_width="326dp"
                 android:layout_height="54dp"
+                android:layout_marginTop="25dp"
                 android:background="@drawable/btn_rec"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
                 android:letterSpacing="-0.02"
                 android:text="Checkout"
                 android:textAllCaps="false"
-                android:layout_marginTop="25dp"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line_2"/>
+                app:layout_constraintTop_toBottomOf="@+id/line_2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

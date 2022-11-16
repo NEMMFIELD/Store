@@ -7,9 +7,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#F8F8F8"
-        tools:context=".view.MainFragment">
+        tools:context=".view.BestSellerFragment">
 
         <ImageView
             android:id="@+id/vector"
@@ -102,7 +102,7 @@
             app:tabMode="fixed"
             app:tabRippleColor="@null"
             app:tabTextAppearance="@style/TabLayoutStyle"
-            app:tabTextColor="#010035"/>
+            app:tabTextColor="#010035" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"

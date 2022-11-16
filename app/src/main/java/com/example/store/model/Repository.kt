@@ -18,7 +18,7 @@ interface Repository {
     fun setFavourites(bestSellerModel: BestSellerModel)
     fun getFavourites(id: Int?): Boolean
     fun getDetailsPhone(): Flow<CarouselDetailsModel>
-    fun getBasketResponse(): Flow<BasketModel>
+    fun getBasketResponse(): Flow<List<BasketModel>>
 }
 
 class RepositoryImpl @Inject constructor(
@@ -33,6 +33,7 @@ class RepositoryImpl @Inject constructor(
         emit(myList)
     }.flowOn(Dispatchers.IO)
 
+
     override fun getPhonesBestSeller(): Flow<List<BestSellerModel>> = flow {
         val request = phonesApi.getPhones().bestSeller
         val myList: List<BestSellerModel> =
@@ -40,13 +41,18 @@ class RepositoryImpl @Inject constructor(
         emit(myList)
     }.flowOn(Dispatchers.IO)
 
+
     override fun getDetailsPhone(): Flow<CarouselDetailsModel> = flow {
         emit(convertDetailsResponseToCarouselDetailsModel(phonesApi.getProductDetails()))
     }.flowOn(Dispatchers.IO)
 
-    override fun getBasketResponse(): Flow<BasketModel> = flow {
-      emit(convertBasketResponseToBasketModel(phonesApi.getBasket().basket?.last()?:throw Exception()))
+
+    override fun getBasketResponse(): Flow<List<BasketModel>> = flow {
+        val request = phonesApi.getBasket().basket ?: throw Exception()
+        emit(request.map { convertBasketResponseToBasketModel(it ?: throw Exception()) })
+
     }.flowOn(Dispatchers.IO)
+
 
     override fun setFavourites(bestSellerModel: BestSellerModel) {
         val editor = sharedPreferences.edit()
@@ -55,6 +61,7 @@ class RepositoryImpl @Inject constructor(
 
     override fun getFavourites(id: Int?): Boolean =
         sharedPreferences.getBoolean(id.toString(), false)
+
 
     private fun convertResponseToCarouselModel(response: HomeStoreItem): CarouselModel =
         CarouselModel(
@@ -66,6 +73,7 @@ class RepositoryImpl @Inject constructor(
             isBuy = response.isBuy
         )
 
+
     private fun convertResponseToBestSellerModel(response: BestSellerItem): BestSellerModel =
         BestSellerModel(
             id = response.id,
@@ -76,6 +84,7 @@ class RepositoryImpl @Inject constructor(
             picturePath = response.picture
         )
 
+
     private fun convertDetailsResponseToCarouselDetailsModel(responseDetails: ResponseDetails): CarouselDetailsModel =
         CarouselDetailsModel(detailsImg = responseDetails.images,
             phoneRating = responseDetails.rating as Double,
@@ -85,11 +94,11 @@ class RepositoryImpl @Inject constructor(
             sd = responseDetails.sd,
             title = responseDetails.title)
 
+
     private fun convertBasketResponseToBasketModel(responseBasket: BasketItem): BasketModel =
         BasketModel(id = responseBasket.id,
             image = responseBasket.images,
             title = responseBasket.title,
             price = responseBasket.price
         )
-
 }

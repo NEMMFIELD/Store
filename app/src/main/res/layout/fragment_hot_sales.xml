@@ -6,7 +6,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.PhonesFragment">
+    tools:context=".view.HotSalesFragment">
 
     <SearchView
         android:id="@+id/searchView"
@@ -55,7 +55,7 @@
         android:letterSpacing="-0.01"
         android:textColor="#010035"
         android:textStyle="bold"
-        android:text="Hot Sales"
+        android:text="@string/hot_sales"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
@@ -68,7 +68,7 @@
         android:textColor="#FF6E4E"
         android:textSize="15sp"
         android:letterSpacing="-0.02"
-        android:text="see more"
+        android:text="@string/see_more"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:layout_marginTop="5dp"
-        android:text="Best Seller"
+        android:text="@string/best_seller"
         android:letterSpacing="-0.01"
         android:textStyle="bold"
         android:textSize="23sp"
@@ -105,7 +105,7 @@
         android:textColor="#FF6E4E"
         android:textSize="15sp"
         android:letterSpacing="-0.02"
-        android:text="see more"
+        android:text="@string/see_more_"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carouselRecyclerview" />
 

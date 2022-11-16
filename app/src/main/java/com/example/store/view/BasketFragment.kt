@@ -2,6 +2,7 @@ package com.example.store.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.store.databinding.FragmentBasketBinding
+import com.example.store.model.network.State
 import com.example.store.viewmodel.BasketViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -36,15 +38,28 @@ class BasketFragment : Fragment() {
         binding.basketList.adapter = viewModelBasket.basketAdapter
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModelBasket.basketFlow.collect {
-                    viewModelBasket.basketAdapter.submitList(it)
-                    if (it.isNotEmpty()) {
-                        binding.basketTotalSum.text = ("$${it.first().price.toString()} us")
+                viewModelBasket.basketFlow.collect { state ->
+                    when (state) {
+                        is State.Success -> {
+                            viewModelBasket.basketAdapter.submitList(state.data)
+                            if (state.data.isNotEmpty()) {
+                                binding.basketTotalSum.text = ("$${
+                                    state.data.stream().mapToInt { it.price ?: 0 }
+                                        .summaryStatistics().sum
+                                } us")
+                            }
+                        }
+                        is State.Failure -> {
+                            Log.d("TagError", "Error: ${state.message}")
+                        }
+                        is State.Empty -> {}
                     }
                 }
             }
         }
-
+        binding.basketBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     companion object {
