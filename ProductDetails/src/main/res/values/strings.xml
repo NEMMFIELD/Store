@@ -1,0 +1,12 @@
+<resources>
+    <string name="back_symbol">&lt;</string>
+    <string name="product_details">Product Details</string>
+    <string name="samsung_galaxy">Samsung Galaxy</string>
+    <string name="shop_details">Shop</string>
+    <string name="details">Details</string>
+    <string name="features">Features</string>
+    <string name="exynos_990">Exynos 990</string>
+    <string name="mp">108 + 12 mp</string>
+    <string name="_256_gb">256 GB</string>
+    <string name="add_to_cart">Add to Cart $1,500.00</string>
+</resources>

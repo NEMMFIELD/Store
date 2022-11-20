@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.example.basket.presentation.BasketFragment
+import com.example.mainscreen.presentation.BestSellerFragment
 import com.example.store.databinding.ActivityMainBinding
-import com.example.store.view.BasketFragment
-import com.example.store.view.BestSellerFragment
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         val itemView = menuViewInBottomNavigationView.getChildAt(index) as BottomNavigationItemView
 
         val badgeNubmerViewHolder = LayoutInflater.from(this)
-            .inflate(R.layout.view_holder_badge_nubmer, menuViewInBottomNavigationView, false)
+            .inflate(R.layout.view_holder_badge_number, menuViewInBottomNavigationView, false)
         itemView.addView(badgeNubmerViewHolder)
 
         val textViewBadgeNumber =

@@ -1,12 +1,17 @@
 package com.example.store.di
 
 import android.content.SharedPreferences
-import com.example.store.model.network.PhonesApi
+import com.example.basket.BasketRepository
+import com.example.basket.BasketRepositoryImpl
+import com.example.basket.network.BasketApi
+import com.example.productdetails.data.ProductDetailsRepository
+import com.example.productdetails.data.ProductDetailsRepositoryImpl
+import com.example.productdetails.data.network.ProductDetailsApi
 import com.example.store.model.Repository
 import com.example.store.model.RepositoryImpl
+import com.example.mainscreen.data.network.PhonesApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,6 +41,33 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRepository(phonesApi: PhonesApi, sharedPreferences: SharedPreferences):Repository = RepositoryImpl(phonesApi,sharedPreferences)
+    fun provideDetailsRetrofit(moshi: Moshi): ProductDetailsApi = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
+        .build()
+        .create(ProductDetailsApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRepository(phonesApi: PhonesApi, sharedPreferences: SharedPreferences): Repository =
+        RepositoryImpl(phonesApi, sharedPreferences)
+
+    @Provides
+    @Singleton
+    fun provideProductDetailsRepository(phonesDetailsApi: ProductDetailsApi): ProductDetailsRepository =
+        ProductDetailsRepositoryImpl(phonesDetailsApi)
+
+    @Provides
+    @Singleton
+    fun provideBasketRetrofit(moshi: Moshi): BasketApi = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
+        .build()
+        .create(BasketApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideBasketRepository(basketApi: BasketApi): BasketRepository =
+        BasketRepositoryImpl(basketApi)
 
 }

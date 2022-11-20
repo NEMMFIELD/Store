@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Store"
 include ':app'
+include ':ProductDetails'
+include ':Basket'
+include ':MainScreen'
